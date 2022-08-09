@@ -94,27 +94,22 @@ export default {
   </section>
 </template>
 <style>
-.main {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
 main .stack {
-  padding: 50px 0px;
+  position: relative;
+  z-index: 2;
+  background-color: transparent;
+  padding-top: 50px;
   width: 60%;
   height: 100vh;
 }
 
-.main .stack .language-type {
+main .stack .language-type {
   color: var(--light-text);
   font-size: 20px;
   list-style: none;
 }
 
-.main .stack .language-type p {
+main .stack .language-type p {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -123,7 +118,7 @@ main .stack {
   width: 100%;
 }
 
-.main .stack .language-type p::after {
+main .stack .language-type p::after {
   content: "";
   width: 0%;
   background-color: lime;
@@ -132,11 +127,11 @@ main .stack {
   transition: width 600ms ease;
 }
 
-.main .stack .language-type p:hover::after {
+main .stack .language-type p:hover::after {
   width: 100px;
 }
 
-.main .stack .stack-container {
+main .stack .stack-container {
   padding: 20px 20px;
   display: flex;
   justify-content: center;
@@ -162,13 +157,13 @@ main .stack .stack-container .left {
   transform: translateX(150px);
 }
 
-.main .stack .stack-container.fade .right,
+main .stack .stack-container.fade .right,
 main .stack .stack-container.fade .left {
   opacity: 1;
   transform: translateX(0px);
 }
 
-.main .stack .stack-container .language-container-box {
+main .stack .stack-container .language-container-box {
   position: relative;
   margin: 20px 20px;
   padding: 2px;
@@ -180,10 +175,10 @@ main .stack .stack-container.fade .left {
   align-items: center;
   transition: box-shadow 500ms ease;
 }
-.main .stack .stack-container .language-container-box:hover {
+main .stack .stack-container .language-container-box:hover {
   box-shadow: none;
 }
-.main .stack .stack-container .language-container-box:hover:after {
+main .stack .stack-container .language-container-box:hover:after {
   content: "";
   position: absolute;
   top: -3px;
@@ -195,7 +190,7 @@ main .stack .stack-container.fade .left {
   animation: borderEffect linear infinite 2s;
 }
 
-.main .stack .stack-container .language-container-box:hover:before {
+main .stack .stack-container .language-container-box:hover:before {
   content: "";
   position: absolute;
   top: -3px;
@@ -218,7 +213,7 @@ main .stack .stack-container.fade .left {
   }
 }
 
-.main .stack .stack-container .language-container-box .language-container {
+main .stack .stack-container .language-container-box .language-container {
   position: relative;
   z-index: 1;
   width: 100px;
@@ -231,7 +226,7 @@ main .stack .stack-container.fade .left {
   background-color: var(--dark-bg);
 }
 
-.main
+main
   .stack
   .stack-container
   .language-container-box
@@ -245,7 +240,7 @@ main .stack .stack-container.fade .left {
   align-items: center;
 }
 
-.main
+main
   .stack
   .stack-container
   .language-container-box
@@ -259,7 +254,7 @@ main .stack .stack-container.fade .left {
   transition: width 500ms ease, filter 500ms ease, top 500ms ease;
 }
 
-.main
+main
   .stack
   .stack-container
   .language-container-box:hover
@@ -269,7 +264,7 @@ main .stack .stack-container.fade .left {
   filter: brightness(100%);
 }
 
-.main .stack .stack-container .language-container-box .language-container p {
+main .stack .stack-container .language-container-box .language-container p {
   position: absolute;
   top: 0%;
   left: 0%;
@@ -284,8 +279,8 @@ main .stack .stack-container.fade .left {
   text-align: center;
   transition: top 600ms ease;
 }
-.main
-  .stack
+main
+ .stack
   .stack-container
   .language-container-box:hover
   .language-container
@@ -294,8 +289,10 @@ main .stack .stack-container.fade .left {
 }
 
 @media only screen and (max-width: 900px) {
-  .main .stack {
+  main .stack {
     height: 100%;
   }
 }
 </style>
+<p>
+</p>

@@ -20,9 +20,9 @@ export default {
             this.$refs.header.addEventListener("mousemove", this.Parallex);
             const active_slide = document.querySelector("[data-navslide]");
             const active = document.querySelector("[data-on-Screen]");
-            delete active.dataset.onScreen
+            delete active.dataset.onScreen;
             delete active_slide.dataset.navslide;
-            e.target.dataset.onScreen = true
+            e.target.dataset.onScreen = true;
             document.getElementById("about").dataset.navslide = true;
           } else {
             return;
@@ -76,16 +76,16 @@ export default {
   width: 60%;
   height: 50%;
   display: flex;
-  backdrop-filter: blur(2px);
   transform: translate3d(calc(var(--x) * 1px), calc(var(--y) * 1px), 0px);
   justify-content: space-evenly;
-  border: 1px solid white;
+  /* background-color: var(--dark-bg); */
+  /* box-shadow: inset 0px 0px 100rem var(--dark-bg); */
+  /* border: 1px solid white; */
   border-radius: 10px;
 }
 .about .info {
   position: relative;
   display: flex;
-  filter: blur(0px);
   flex-direction: column;
   justify-content: center;
   padding: 20px 15px 0px 15px;

@@ -52,7 +52,7 @@ html {
   overflow: auto;
   padding-right: 15px;
   scroll-behavior: smooth;
-  background-color: var(--dark-bg);
+  background-color: transparent;
 }
 
 .overflow-container {

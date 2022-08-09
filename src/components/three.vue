@@ -10,7 +10,7 @@ export default {
   },
   methods: {
     init: function () {
-      const container = document.getElementsByClassName("about")[0];
+      const container = document.getElementsByClassName("overflow-div")[0];
 
       this.scene = new Three.Scene();
       this.camera = new Three.PerspectiveCamera(
@@ -30,9 +30,9 @@ export default {
       container.appendChild(this.renderer.domElement);
 
       for (var i = 0; i < 12000; i++) {
-        const x = Math.random() * 1000 - 200;
-        const y = Math.random() * 1000 - 200;
-        const z = Math.random() * 1000 - 200;
+        const x = Math.random() * 700 - 200;
+        const y = Math.random() * 700 - 200;
+        const z = Math.random() * 700 - 200;
         vertices.push(x, y, z);
       }
       this.Geo = new Three.BufferGeometry();
@@ -42,7 +42,7 @@ export default {
       );
       this.Geo.setAttribute(
         "velocity",
-        new Three.Float32BufferAttribute(12000, 1)
+        new Three.Float32BufferAttribute(6000, 1)
       );
 
       this.material = new Three.PointsMaterial({
@@ -61,7 +61,7 @@ export default {
       const vela = this.Geo.getAttribute("velocity").array;
       const pos = this.Geo.getAttribute("position");
       const posa = pos.array;
-      for (let index = 0; index < 12000; index++) {
+      for (let index = 0; index < 6000; index++) {
         vela[index] += acceleration;
         posa[index] -= vela[index];
         if (posa[index + 2] < -200) {
@@ -108,7 +108,7 @@ export default {
 canvas {
   background-color: white;
   position: absolute;
-  z-index: 0;
+  z-index: -1;
   top: 0;
   bottom: 0;
   left: 0;

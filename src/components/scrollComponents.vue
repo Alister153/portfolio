@@ -107,7 +107,7 @@ export default {
 }
 .navigation-controller .navs .nav-bar:nth-child(1) {
   width: 20px;
-  background-color: limegreen;
+  background-color: lime;
 }
 .navigation-controller .navs .nav-bar:nth-child(2) {
   width: 25px;

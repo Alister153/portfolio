@@ -1,10 +1,25 @@
 <script>
+import abc from "../../assets/abc.png";
 export default {
   data() {
     return {
       projects: [
         {
-          img: "../assets/abc.png",
+          img: abc,
+          title: "MERN App",
+          para: "Fully Responsive MERN App",
+          git_link: "https://github.com/Alister153/blaa-app",
+          app_link: "https://blaa-app.herokuapp.com/",
+        },
+        {
+          img: abc,
+          title: "MERN App",
+          para: "Fully Responsive MERN App",
+          git_link: "https://github.com/Alister153/blaa-app",
+          app_link: "https://blaa-app.herokuapp.com/",
+        },
+        {
+          img: abc,
           title: "MERN App",
           para: "Fully Responsive MERN App",
           git_link: "https://github.com/Alister153/blaa-app",
@@ -14,13 +29,27 @@ export default {
     };
   },
   mounted: function () {
-    const btn = document.querySelector(".next-btn");
-    btn.addEventListener("click", () => {
-      const slides = btn
+    const nxtbtn = document.querySelector("#next-btn");
+    const prevbtn = document.querySelector("#prev-btn");
+    nxtbtn.addEventListener("click", () => {
+      const slides = nxtbtn
         .closest("[data-parent]")
         .querySelector("[data-slides]");
       const activeSlide = slides.querySelector("[data-active]");
       var newIndex = [...slides.children].indexOf(activeSlide) + 1;
+
+      if (newIndex >= slides.children.length) newIndex = 0;
+      else if (newIndex < 0) newIndex = slides.children.length - 1;
+
+      slides.children[newIndex].dataset.active = true;
+      delete activeSlide.dataset.active;
+    });
+    prevbtn.addEventListener("click", () => {
+      const slides = prevbtn
+        .closest("[data-parent]")
+        .querySelector("[data-slides]");
+      const activeSlide = slides.querySelector("[data-active]");
+      var newIndex = [...slides.children].indexOf(activeSlide) - 1;
 
       if (newIndex >= slides.children.length) newIndex = 0;
       else if (newIndex < 0) newIndex = slides.children.length - 1;
@@ -42,7 +71,7 @@ export default {
         });
       },
       {
-        threshold: 0.5,
+        threshold: 0.1,
       }
     );
     observer.observe(this.$refs.projects);
@@ -50,35 +79,80 @@ export default {
 };
 </script>
 <template>
-  <section class="project view" ref="projects">
+  <section class="projects view" ref="projects">
     <h2 class="project-glitch">Projects</h2>
     <div class="projects--carousel" data-parent>
-      <div class="next-btn">
-        <fawsome-icon :icon="['fas', 'angle-right']" size="2x"></fawsome-icon>
-      </div>
-      <ul data-slides v-for="project in projects">
+      <ul data-slides>
         <li class="project" data-active>
-          <img :src=project.img alt="" class="project-img" />
+          <img src="../../assets/abc.png" alt="" class="project-img" />
+          <div>
+            <h2>MERN App</h2>
+            <p>Responsive MERN App</p>
+            <span class="links-wrapper">
+              <a
+                href="https://github.com/Alister153/blaa-app"
+                target="_blank"
+                class="link"
+                id="github"
+              >
+                <fawsome-icon :icon="['fab', 'github']" size="2x">
+                </fawsome-icon>
+              </a>
+              <a
+                href="https://blaa-app.herokuapp.com/"
+                class="link"
+                target="_blank"
+                id="link"
+              >
+                <fawsome-icon :icon="['fas', 'link']" size="2x"> </fawsome-icon>
+              </a>
+            </span>
+          </div>
+        </li>
+        <li class="project" v-for="project in projects">
+          <img v-bind:src="project.img" alt="" class="project-img" />
           <div>
             <h2>{{ project.title }}</h2>
             <p>{{ project.para }}</p>
             <span class="links-wrapper">
-              <a :href=project.git_link target="_blank" class="link" id="github">
+              <a
+                :href="project.git_link"
+                target="_blank"
+                class="link"
+                id="github"
+              >
                 <fawsome-icon :icon="['fab', 'github']" size="2x">
                 </fawsome-icon>
               </a>
-              <a :href=project.app_link class="link" target="_blank" id="link">
+              <a
+                :href="project.app_link"
+                class="link"
+                target="_blank"
+                id="link"
+              >
                 <fawsome-icon :icon="['fas', 'link']" size="2x"> </fawsome-icon>
               </a>
             </span>
           </div>
         </li>
       </ul>
+      <div class="next-btn">
+        <fawsome-icon
+          id="prev-btn"
+          :icon="['fas', 'angle-left']"
+          size="2x"
+        ></fawsome-icon>
+        <fawsome-icon
+          id="next-btn"
+          :icon="['fas', 'angle-right']"
+          size="2x"
+        ></fawsome-icon>
+      </div>
     </div>
   </section>
 </template>
 <style>
-.project {
+.projects {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -86,44 +160,54 @@ export default {
   width: 100%;
   height: 100vh;
 }
-.project .project-glitch,
-.project .projects--carousel {
+.projects .project-glitch,
+.projects .projects--carousel {
   margin: 50px 0px;
 }
-.project .projects--carousel {
+.projects .projects--carousel {
   position: relative;
   width: 50%;
   height: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
 }
-.project .projects--carousel .next-btn {
-  z-index: 1;
+.projects .projects--carousel .next-btn {
+  position: absolute;
+  right: 0%;
+  bottom: -20%;
   display: flex;
   cursor: pointer;
   justify-content: center;
   align-items: center;
   font-weight: bolder;
-  position: absolute;
   border-radius: 0px 20px 20px 0px;
   width: 50px;
-  right: -1%;
-  top: 0%;
-  bottom: -1%;
-  color: black;
+  color: white;
   transition: background 400ms ease, color 400ms ease;
 }
-.project .projects--carousel .next-btn:hover {
+.projects .projects--carousel .next-btn:hover {
   color: white;
   background-color: #000b168f;
 }
-.project ul {
+.projects .projects--carousel .next-btn svg {
+  margin: 0px 10px;
+}
+.projects ul {
   list-style: none;
+  padding: 0%;
+  margin: 0%;
   width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.project .projects--carousel .project {
+.projects .projects--carousel .project {
+  visibility: hidden;
   position: absolute;
-  top: 0;
-  background-color: antiquewhite;
+  overflow: hidden;
   border-radius: 20px;
   width: 100%;
   height: 100%;
@@ -131,11 +215,27 @@ export default {
   opacity: 0;
   transition: transform 500ms ease, opacity 500ms ease;
 }
-.project .project[data-active] {
-  opacity: 1;
-  transform: translateX(-40px);
+.projects .projects--carousel .project[data-active]:hover {
+  transform: scale(1.06);
 }
-.project .project div {
+.projects .projects--carousel .project[data-active] {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(0px) scale(1);
+}
+.projects .projects--carousel .project .project-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  transform: scale(1);
+  transition: all 400ms ease;
+}
+.projects .projects--carousel .project:hover .project-img {
+  filter: blur(5px);
+  transform: scale(1.1);
+}
+.projects .project div {
   position: absolute;
   display: flex;
   align-items: center;
@@ -147,36 +247,39 @@ export default {
   border-radius: 20px;
   background-color: rgba(0, 0, 0, 0.474);
 }
-.project .project div .links-wrapper .link {
+.projects .project div .links-wrapper .link {
   margin: 0px 5px;
 }
-.project .project div .links-wrapper .link svg {
+.projects .project div .links-wrapper .link svg {
   color: white;
-  transition: color 500ms ease;
+  filter: brightness(50%);
+  transition: filter 500ms ease;
 }
-.project .project div .links-wrapper .link:hover svg {
-  color: black;
+.projects .project div .links-wrapper .link:hover svg {
+  filter: brightness(100%);
 }
-.project .project-glitch {
+.projects .project-glitch {
   cursor: default;
   position: relative;
   z-index: 1;
   margin: 0%;
   font-size: 50px;
 }
-.project .project-glitch:after {
+.projects .project-glitch:after {
   content: "Projects";
   position: absolute;
   top: 0%;
   left: 0%;
+  z-index: -1;
   color: white;
   text-shadow: -3px 0px magenta;
   animation: glitch1 500ms 2.5s alternate-reverse infinite,
     clip 5s 2.05s infinite;
 }
-.project .project-glitch:before {
+.projects .project-glitch:before {
   content: "Projects";
   position: absolute;
+  z-index: -1;
   color: white;
   top: 0%;
   left: 0%;
@@ -226,18 +329,21 @@ export default {
   }
 }
 @media only screen and (max-width: 900px) {
-  .project .projects--carousel {
+  .projects .projects--carousel {
     width: 500px;
     height: 300px;
+    flex-direction: column-reverse;
   }
 }
 @media only screen and (max-width: 500px) {
-  .project .projects--carousel {
+  .projects .projects--carousel {
     width: 300px;
     height: 200px;
+    flex-direction: column-reverse;
   }
-  .project .projects--carousel .next-btn {
+  .projects .projects--carousel .next-btn {
     width: 40px;
+    position: block;
   }
 }
 </style>
