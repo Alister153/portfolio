@@ -97,7 +97,7 @@ export default {
 main .stack {
   position: relative;
   z-index: 2;
-  background-color: transparent;
+  border-radius: 5px;
   padding-top: 50px;
   width: 60%;
   height: 100vh;

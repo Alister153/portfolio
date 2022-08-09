@@ -187,9 +187,8 @@ export default {
   color: white;
   transition: background 400ms ease, color 400ms ease;
 }
-.projects .projects--carousel .next-btn:hover {
-  color: white;
-  background-color: #000b168f;
+.projects .projects--carousel .next-btn svg:hover {
+  color: orange;
 }
 .projects .projects--carousel .next-btn svg {
   margin: 0px 10px;
