@@ -1,7 +1,17 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      projects: [
+        {
+          img: "../assets/abc.png",
+          title: "MERN App",
+          para: "Fully Responsive MERN App",
+          git_link: "https://github.com/Alister153/blaa-app",
+          app_link: "https://blaa-app.herokuapp.com/",
+        },
+      ],
+    };
   },
   mounted: function () {
     const btn = document.querySelector(".next-btn");
@@ -46,50 +56,18 @@ export default {
       <div class="next-btn">
         <fawsome-icon :icon="['fas', 'angle-right']" size="2x"></fawsome-icon>
       </div>
-      <ul data-slides>
+      <ul data-slides v-for="project in projects">
         <li class="project" data-active>
-          <img src="" alt="" class="project-img" />
+          <img :src=project.img alt="" class="project-img" />
           <div>
-            <h2>MERN app</h2>
-            <p>Fully Responsive MERN app</p>
+            <h2>{{ project.title }}</h2>
+            <p>{{ project.para }}</p>
             <span class="links-wrapper">
-              <a href="" class="link" id="github">
+              <a :href=project.git_link target="_blank" class="link" id="github">
                 <fawsome-icon :icon="['fab', 'github']" size="2x">
                 </fawsome-icon>
               </a>
-              <a href="" class="link" id="link">
-                <fawsome-icon :icon="['fas', 'link']" size="2x"> </fawsome-icon>
-              </a>
-            </span>
-          </div>
-        </li>
-        <li class="project">
-          <img src="" alt="" class="project-img" />
-          <div>
-            <h2>MERN app</h2>
-            <p>Fully Responsive MERN app</p>
-            <span class="links-wrapper">
-              <a href="" class="link" id="github">
-                <fawsome-icon :icon="['fab', 'github']" size="2x">
-                </fawsome-icon>
-              </a>
-              <a href="" class="link" id="link">
-                <fawsome-icon :icon="['fas', 'link']" size="2x"> </fawsome-icon>
-              </a>
-            </span>
-          </div>
-        </li>
-        <li class="project">
-          <img src="" alt="" class="project-img" />
-          <div>
-            <h2>MERN app</h2>
-            <p>Fully Responsive MERN app</p>
-            <span class="links-wrapper">
-              <a href="" class="link" id="github">
-                <fawsome-icon :icon="['fab', 'github']" size="2x">
-                </fawsome-icon>
-              </a>
-              <a href="" class="link" id="link">
+              <a :href=project.app_link class="link" target="_blank" id="link">
                 <fawsome-icon :icon="['fas', 'link']" size="2x"> </fawsome-icon>
               </a>
             </span>
@@ -193,7 +171,8 @@ export default {
   left: 0%;
   color: white;
   text-shadow: -3px 0px magenta;
-  animation: glitch1 500ms 2.5s alternate-reverse infinite, clip 5s 2.05s infinite;
+  animation: glitch1 500ms 2.5s alternate-reverse infinite,
+    clip 5s 2.05s infinite;
 }
 .project .project-glitch:before {
   content: "Projects";
@@ -238,11 +217,11 @@ export default {
     clip-path: inset(15px 0px 70px 0px);
   }
 }
-@keyframes clip{
-  1%{
+@keyframes clip {
+  1% {
     transform: rotateX(-180deg) skewX(70deg);
   }
-  2%{
+  2% {
     transform: rotateX(0deg) skewX(0deg);
   }
 }
@@ -257,7 +236,7 @@ export default {
     width: 300px;
     height: 200px;
   }
-  .project .projects--carousel .next-btn{
+  .project .projects--carousel .next-btn {
     width: 40px;
   }
 }
