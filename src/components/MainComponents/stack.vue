@@ -61,6 +61,13 @@ export default {
       { threshold: 0.2 }
     );
     StackObserver.observe(this.$refs.stacks);
+    document.querySelectorAll(".language-container").forEach(e => {
+      e.addEventListener("mouseover", () => {
+        const active = e.closest(".stack-container").querySelector("[data-current-Active]")
+        e.dataset.currentActive = true
+        delete active.dataset.currentActive
+      })
+    })
   },
 };
 </script>
@@ -102,13 +109,11 @@ main .stack {
   width: 60%;
   height: 100vh;
 }
-
 main .stack .language-type {
   color: var(--light-text);
   font-size: 20px;
   list-style: none;
 }
-
 main .stack .language-type p {
   display: flex;
   flex-direction: column;
@@ -117,27 +122,22 @@ main .stack .language-type p {
   cursor: default;
   width: 100%;
 }
-
-main .stack .language-type p::after {
+main .stack .language-type p:after{
   content: "";
-  width: 0%;
-  background-color: lime;
+  width: 0px;
   height: 3px;
-  border-radius: 0%;
-  transition: width 600ms ease;
+  background-color: lime;
+  transition: width 500ms ease;
 }
-
-main .stack .language-type p:hover::after {
+main .stack .language-type p:hover:after{
   width: 100px;
 }
-
 main .stack .stack-container {
   padding: 20px 20px;
   display: flex;
   justify-content: center;
   overflow-x: hidden;
 }
-
 main .stack .stack-container .right,
 main .stack .stack-container .left {
   width: 60%;
@@ -167,7 +167,7 @@ main .stack .stack-container .language-container-box {
   position: relative;
   margin: 20px 20px;
   padding: 2px;
-  box-shadow: 0px 0px 5px white;
+  box-shadow: 0px  2px 5px white;
   overflow: hidden;
   border-radius: 10px;
   display: flex;
@@ -178,7 +178,7 @@ main .stack .stack-container .language-container-box {
 main .stack .stack-container .language-container-box:hover {
   box-shadow: none;
 }
-main .stack .stack-container .language-container-box:hover:after {
+/* main .stack .stack-container .language-container-box:hover:after {
   content: "";
   position: absolute;
   top: -3px;
@@ -188,9 +188,9 @@ main .stack .stack-container .language-container-box:hover:after {
   background-image: conic-gradient(transparent, transparent, transparent, lime);
   filter: blur(10px);
   animation: borderEffect linear infinite 2s;
-}
+} */
 
-main .stack .stack-container .language-container-box:hover:before {
+/* main .stack .stack-container .language-container-box:hover:before {
   content: "";
   position: absolute;
   top: -3px;
@@ -201,9 +201,9 @@ main .stack .stack-container .language-container-box:hover:before {
   filter: blur(10px);
   animation: borderEffect linear infinite 2s;
   animation-delay: -3s;
-}
+} */
 
-@keyframes borderEffect {
+/* @keyframes borderEffect {
   0% {
     transform: rotate(0deg);
   }
@@ -211,7 +211,7 @@ main .stack .stack-container .language-container-box:hover:before {
   100% {
     transform: rotate(360deg);
   }
-}
+} */
 
 main .stack .stack-container .language-container-box .language-container {
   position: relative;
@@ -222,10 +222,13 @@ main .stack .stack-container .language-container-box .language-container {
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  filter: brightness(60%);
   padding: 20px;
-  background-color: var(--dark-bg);
+  background-color: transparent;
 }
-
+main .stack .stack-container .language-container-box .language-container:hover{
+  filter: brightness(100%);
+}
 main
   .stack
   .stack-container
@@ -246,12 +249,10 @@ main
   .language-container-box
   .language-container
   .language-img {
-  position: absolute;
-  top: 5%;
   bottom: 50%;
   width: 110px;
-  filter: brightness(60%);
-  transition: width 500ms ease, filter 500ms ease, top 500ms ease;
+  transform: scale(1);
+  transition: width 500ms ease, filter 500ms ease, top 500ms ease, transform 500ms ease;
 }
 
 main
@@ -261,31 +262,17 @@ main
   .language-container
   .language-img {
   width: 110px;
+  transform: scale(1.2);
   filter: brightness(100%);
 }
-
 main .stack .stack-container .language-container-box .language-container p {
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  right: 0%;
-  bottom: 0%;
-  font-size: 20px;
-  background-color: rgba(0, 0, 0, 0.166);
-  z-index: 3;
-  padding: 10px 0px;
-  backdrop-filter: blur(2px);
-  color: var(--light-text);
-  text-align: center;
-  transition: top 600ms ease;
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity 500ms ease, transform 400ms ease;
 }
-main
- .stack
-  .stack-container
-  .language-container-box:hover
-  .language-container
-  p {
-  top: 65%;
+main .stack .stack-container .language-container-box .language-container:hover p{
+  transform: scale(1.1);
+  opacity: 1;
 }
 
 @media only screen and (max-width: 900px) {

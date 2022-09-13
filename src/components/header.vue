@@ -78,9 +78,6 @@ export default {
   display: flex;
   transform: translate3d(calc(var(--x) * 1px), calc(var(--y) * 1px), 0px);
   justify-content: space-evenly;
-  /* background-color: var(--dark-bg); */
-  /* box-shadow: inset 0px 0px 100rem var(--dark-bg); */
-  /* border: 1px solid white; */
   border-radius: 10px;
 }
 .about .info {
@@ -179,5 +176,11 @@ export default {
   background: rgba(255, 255, 255, 0.3);
   transition: all 200ms ease;
   animation: background-animate 10s infinite ease;
+}
+
+@media only screen and (max-width: 500px){
+  .about .info-container .info .about-me{
+    margin-top: 20%;
+  }
 }
 </style>

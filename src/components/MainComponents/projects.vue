@@ -13,15 +13,15 @@ export default {
         },
         {
           img: abc,
-          title: "MERN App",
+          title: "Netflix Clone",
           para: "Fully Responsive MERN App",
           git_link: "https://github.com/Alister153/blaa-app",
           app_link: "https://blaa-app.herokuapp.com/",
         },
         {
           img: abc,
-          title: "MERN App",
-          para: "Fully Responsive MERN App",
+          title: "e-commerce App",
+          para: "",
           git_link: "https://github.com/Alister153/blaa-app",
           app_link: "https://blaa-app.herokuapp.com/",
         },
@@ -207,7 +207,7 @@ export default {
   visibility: hidden;
   position: absolute;
   overflow: hidden;
-  border-radius: 20px;
+  /* border-radius: 20px; */
   width: 100%;
   height: 100%;
   transform: translateX(-550px);
@@ -243,7 +243,7 @@ export default {
   top: 0%;
   width: 100%;
   height: 100%;
-  border-radius: 20px;
+  /* border-radius: 20px; */
   background-color: rgba(0, 0, 0, 0.474);
 }
 .projects .project div .links-wrapper .link {
@@ -260,16 +260,17 @@ export default {
 .projects .project-glitch {
   cursor: default;
   position: relative;
-  z-index: 1;
+  z-index: 0;
   margin: 0%;
   font-size: 50px;
+  animation: clip 5s 2.05s infinite;
 }
 .projects .project-glitch:after {
   content: "Projects";
   position: absolute;
   top: 0%;
   left: 0%;
-  z-index: -1;
+  z-index: 1;
   color: white;
   text-shadow: -3px 0px magenta;
   animation: glitch1 500ms 2.5s alternate-reverse infinite,
@@ -278,12 +279,12 @@ export default {
 .projects .project-glitch:before {
   content: "Projects";
   position: absolute;
-  z-index: -1;
+  z-index: 1;
   color: white;
   top: 0%;
   left: 0%;
   text-shadow: -3px 0px limegreen;
-  animation: glitch2 500ms 2.5s alternate infinite, clip 5s 2.05s infinite;
+  animation: glitch2 500ms 2.5s alternate-reverse infinite, clip 5s 2.05s infinite;
 }
 @keyframes glitch1 {
   0% {
@@ -304,19 +305,19 @@ export default {
 }
 @keyframes glitch2 {
   0% {
-    clip-path: inset(100px 0px 30px 0px);
+    clip-path: inset(10px 0px 30px 0px);
   }
   30% {
-    clip-path: inset(60px 0px 60px 0px);
+    clip-path: inset(25px 0px 15px 0px);
   }
   60% {
-    clip-path: inset(45px 0px 25px 0px);
+    clip-path: inset(29px 0px 65px 0px);
   }
   90% {
     clip-path: inset(20px 0px 25px 0px);
   }
   100% {
-    clip-path: inset(15px 0px 70px 0px);
+    clip-path: inset(1px 0px 70px 0px);
   }
 }
 @keyframes clip {

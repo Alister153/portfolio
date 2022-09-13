@@ -99,7 +99,7 @@ export default {
 }
 .navigation-controller .navs .nav-bar {
   width: 30px;
-  height: 10px;
+  height: 5px;
   border-radius: 10px;
   margin: 2px 0px;
   cursor: pointer;
