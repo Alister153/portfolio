@@ -120,7 +120,7 @@ export default {
   </div>
 </template>
 
-<!-- <style lang="sass">
+<style lang="sass">
 .all-projects
   min-height: 100vh
   display: flex
@@ -238,4 +238,4 @@ export default {
 .all-projects .project .details
   padding: 10px
   margin: 0px 20px
-</style> -->
+</style>
