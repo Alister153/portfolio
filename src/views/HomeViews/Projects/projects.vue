@@ -1,11 +1,7 @@
 <script>
 import { ref } from "vue";
 import abc from "/src/assets/abc.png";
-import AllProjects from "./AllProjects.vue";
 
-const routes = {
-  "/all-projects": AllProjects,
-};
 export default {
   data() {
     return {
