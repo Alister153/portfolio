@@ -4,7 +4,6 @@ import Main from "./HomeViews/main.vue";
 import Three from "./three.vue";
 import Navbar from "./HomeViews/Navbar.vue";
 import Contact from "./HomeViews/Contact/contact.vue";
-import '../assets/HELLO-DENVER-DISPLAY-REGULAR-Regular/stylesheet.css'
 export default {
   components: {
     Header,
