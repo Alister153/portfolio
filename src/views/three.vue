@@ -10,7 +10,7 @@ export default {
   },
   methods: {
     init: function () {
-      const container = document.getElementsByClassName("overflow-div")[0];
+      const container = document.getElementsByClassName("main")[0];
 
       this.scene = new Three.Scene();
       this.camera = new Three.PerspectiveCamera(
@@ -78,7 +78,7 @@ export default {
     },
 
     onResize: function () {
-      const container = document.getElementsByClassName("about")[0];
+      const container = document.getElementsByClassName("main")[0];
       this.renderer.setSize(container.clientWidth, container.clientHeight);
       this.camera.aspect = window.innerWidth / window.innerHeight;
       this.camera.updateProjectionMatrix();
@@ -115,5 +115,7 @@ canvas {
   bottom: 0;
   left: 0;
   right: 0;
+  width: 100%;
+  height: 100%;
 }
 </style>
