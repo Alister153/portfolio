@@ -102,8 +102,6 @@ export default {
 </template>
 
 <style>
-@import url('http://fonts.cdnfonts.com/css/hello-denver-display');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono&display=swap');
 .about {
   position: relative;
   font-family: 'HELLO DENVER DISPLAY REGULAR';
@@ -137,6 +135,7 @@ export default {
   justify-content: center;
   padding: 20px 15px 0px 15px;
   z-index: 1;
+  font-family: 'HELLO DENVER DISPLAY REGULAR';
 }
 
 .about .info .hi {
