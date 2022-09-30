@@ -18,8 +18,8 @@ export default {
 
 <template>
   <main class="main">
-    <!-- <stack v-on:changeRoute="handleRoute" />
-    <projects v-on:changeRoute="handleRoute" /> -->
+    <stack v-on:changeRoute="handleRoute" />
+    <projects v-on:changeRoute="handleRoute" />
   </main>
 </template>
 <style>
