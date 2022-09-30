@@ -106,8 +106,7 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono&display=swap');
 .about {
   position: relative;
-  font-family: 'HELLO DENVER DISPLAY REGULAR', sans-serif !important;
-  font-family: 'HELLO DENVER DISPLAY BOLD', sans-serif !important;
+  font-family: 'HELLO DENVER DISPLAY REGULAR';
   z-index: 1;
   color: var(--light-text);
   display: flex;
